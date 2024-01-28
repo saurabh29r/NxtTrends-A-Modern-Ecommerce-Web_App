@@ -2,12 +2,14 @@ import React from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import "./Logins.css";
 import Accordians from "./Accordians";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Login() {
   const [username, setUser] = useState("");
   const [password, setPass] = useState("");
+  const [showErro, setShowError] = useState(false);
 
   let navigate = useNavigate();
   // here useNavigate hook is used for navigate from one page to another page.
@@ -29,11 +31,26 @@ function Login() {
 
     if (response.ok === true) {
       navigate("../", { replace: true });
+      Cookies.set("jwt_token", data.jwt_token, {
+        expires: 5,
+      });
       // here we should remember that we use ../ to fix the page on the current location and disable back button
     } else {
       navigate("/login");
+      console.log(data.error_msg);
+      setShowError(data.error_msg);
     }
   };
+
+  useEffect(() => {
+    const jwtToken = Cookies.get("jwt_token");
+    if (jwtToken !== undefined) {
+      navigate("/", { replace: true });
+      console.log("jwt_token.value");
+    } else if (jwtToken === undefined) {
+      navigate("/login", { replace: true });
+    }
+  }, [navigate]);
 
   return (
     <Container>
@@ -105,6 +122,9 @@ function Login() {
                 >
                   Submit
                 </button>
+              </div>
+              <div>
+                {showErro && <div className="error-msg-api"> {showErro} </div>}
               </div>
               <div className="mt-4 d-none d-md-block w-50 accordinas">
                 <Accordians />
