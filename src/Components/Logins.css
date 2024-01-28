@@ -1,0 +1,54 @@
+body{
+    background-color: rgb(236 253 245);
+}
+
+
+
+.login-image-container img{
+    height: 100%;
+    width: 100%;
+    padding: 50px; 
+
+}
+
+.login-imgage{
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     animation: float 3s ease-out infinite;
+}
+@keyframes float {
+    50%{
+        transform: translateY(60px);
+    }
+    
+}
+.form-image{
+    height: 40%;
+    width: 40%;
+}
+
+.form-container{
+    background-color:white;
+    border-radius: 10px;
+    height: fit-content;
+    box-shadow: 5px 5px;
+    margin-bottom: 10px;
+  
+
+}
+
+.span-element{
+    font-weight: bold;
+}
+
+.login-imgages{
+    height: 285px;
+    width: 245px;
+}
+
+
+.label-element{
+    font-weight: bold;
+}
+
