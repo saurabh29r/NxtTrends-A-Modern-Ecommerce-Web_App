@@ -6,16 +6,17 @@ import Home from "./Pages/Home";
 import Page404 from "./Components/page404";
 import Carts from "./Pages/Carts";
 import Products from "./Pages/Products";
+import Protected from "./Components/Protected";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Protected Comp={Home} />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/carts" element={<Carts />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/carts" element={<Protected Comp={Carts} />} />
+          <Route path="/products" element={<Protected Comp={Products} />} />
           <Route path="/*" element={<Page404 />} />
         </Routes>
       </BrowserRouter>

@@ -1,11 +1,26 @@
 import React from "react";
-import {} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import Cookies from "js-cookie";
 
 function Protected(props) {
-  const { Componet } = props;
+  const { Comp } = props;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const jwtToken = Cookies.get("jwt_token");
+    if (jwtToken !== undefined) {
+      navigate("/", { replace: true });
+      console.log("jwt_token.value");
+    } else {
+      navigate("/login", { replace: true });
+    }
+  }, [navigate]);
+
   return (
     <div>
-      <Componet />
+      <Comp />
     </div>
   );
 }

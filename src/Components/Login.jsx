@@ -47,7 +47,7 @@ function Login() {
     if (jwtToken !== undefined) {
       navigate("/", { replace: true });
       console.log("jwt_token.value");
-    } else if (jwtToken === undefined) {
+    } else {
       navigate("/login", { replace: true });
     }
   }, [navigate]);
