@@ -10,9 +10,7 @@ function Protected(props) {
 
   useEffect(() => {
     const jwtToken = Cookies.get("jwt_token");
-    if (jwtToken !== undefined) {
-      navigate("/", { replace: true });
-    } else {
+    if (jwtToken === undefined) {
       navigate("/login", { replace: true });
     }
   }, [navigate]);
