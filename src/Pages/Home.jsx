@@ -1,6 +1,7 @@
 import React from "react";
 import Navbars from "../Components/Navbars";
 import { Container, Row, Col } from "react-bootstrap";
+import Contactus from "../Components/Contactus";
 
 function Home() {
   return (
@@ -132,6 +133,7 @@ function Home() {
               </p>
             </div>
           </Col>
+          <Contactus />
         </Row>
       </Container>
     </>

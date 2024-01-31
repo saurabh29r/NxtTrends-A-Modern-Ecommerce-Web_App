@@ -3,6 +3,7 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import "./Navbars.css";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Cookies from "js-cookie";
+import { ShoppingCart } from "lucide-react";
 function Navbars() {
   const [menuOpen, setmenuOpen] = useState(false);
 
@@ -38,10 +39,12 @@ function Navbars() {
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/carts">Carts</NavLink>
+            <NavLink to="/products">Products</NavLink>
           </li>
           <li>
-            <NavLink to="/products">Products</NavLink>
+            <NavLink to="/carts">
+              <ShoppingCart />
+            </NavLink>
           </li>
           <li>
             <button
