@@ -12,7 +12,6 @@ function Protected(props) {
     const jwtToken = Cookies.get("jwt_token");
     if (jwtToken !== undefined) {
       navigate("/", { replace: true });
-      console.log("jwt_token.value");
     } else {
       navigate("/login", { replace: true });
     }
