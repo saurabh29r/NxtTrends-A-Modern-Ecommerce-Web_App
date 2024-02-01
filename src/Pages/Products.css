@@ -1,0 +1,20 @@
+.cou-img{
+  width: 100%;
+  max-height: 60vh; 
+  cursor: pointer;
+
+}
+
+
+
+
+.carousel-caption{
+    color: magenta;
+    font-weight: bold;
+    padding-right: 75px;
+}
+
+.carosel-1{
+    color: whitesmoke !important;
+   margin-top: 25px;
+}
