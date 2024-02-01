@@ -31,7 +31,7 @@ function Navbars() {
             console.log("button click hua");
           }}
         >
-          <RxHamburgerMenu />
+          <RxHamburgerMenu className="hams" />
         </div>
 
         <ul className={menuOpen ? "open" : ""}>

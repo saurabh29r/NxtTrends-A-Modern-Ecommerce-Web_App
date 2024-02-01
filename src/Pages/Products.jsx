@@ -3,7 +3,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import Navbars from "../Components/Navbars";
 import { useState } from "react";
 import Cookies from "js-cookie";
-import Corusels from "../Components/Corusels";
 import "./Products.css";
 
 function Products() {
@@ -39,14 +38,21 @@ function Products() {
       <Navbars />
 
       <Container fluid>
-        <Row className="rows">
-          <Col lg={12} className="pb-2">
-            <Corusels />
-          </Col>
-        </Row>
         <Row>
           <Col>
             <div className="p3-5 prods">
+              <h1> Products </h1>
+              <h1> Products </h1>
+              <h1> Products </h1>
+              <h1> Products </h1>
+              <h1> Products </h1>
+              <h1> Products </h1>
+              <h1> Products </h1>
+              <h1> Products </h1>
+              <h1> Products </h1>
+              <h1> Products </h1>
+              <h1> Products </h1>
+              <h1> Products </h1>
               <h1> Products </h1>
             </div>
           </Col>
