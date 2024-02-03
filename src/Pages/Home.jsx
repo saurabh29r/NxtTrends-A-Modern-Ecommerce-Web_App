@@ -2,6 +2,7 @@ import React from "react";
 import Navbars from "../Components/Navbars";
 import { Container, Row, Col } from "react-bootstrap";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -15,8 +16,7 @@ function Home() {
               <div className="pr-3">
                 <div className="main-heading-container">
                   <h1 className="main-heading">
-                    {" "}
-                    Clothes That Get YOU Noticed
+                    Essentials That Get YOU Noticed
                   </h1>
                 </div>
                 <div className="home-image-container d-lg-none d-md-block d-sm-block d-block">
@@ -37,10 +37,11 @@ function Home() {
                   </p>
                 </div>
                 <div className="btn-container mt-3">
-                  <button className="btn btn-primary mt-2 buttons">
-                    {" "}
-                    Shop Now
-                  </button>
+                  <Link to="/products">
+                    <button className="btn btn-primary buttons">
+                      Shop Now
+                    </button>
+                  </Link>
                 </div>
               </div>
               <div className="pl-3">
