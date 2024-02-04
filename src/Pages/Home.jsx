@@ -48,7 +48,7 @@ function Home() {
                 <img
                   src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-home-img.png"
                   alt=""
-                  className="home-img-large-screen d-lg-block  d-none"
+                  className="home-img-large-screen d-lg-block d-none"
                 />
               </div>
             </div>
