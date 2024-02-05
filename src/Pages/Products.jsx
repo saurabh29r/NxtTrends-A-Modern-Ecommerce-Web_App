@@ -47,21 +47,18 @@ function Products() {
                 const { brand, image_url, price, rating, title } = item;
 
                 return (
-                  <div key={index.id} className="product-container">
+                  <div key={index} className="product-container">
                     <div className="image-container">
-                      <img src={image_url} alt="" />
-                    </div>
-                    <div className="image-container">
-                      <p>{brand}</p>
-                    </div>
-                    <div className="image-container">
+                      <img src={image_url} alt="" className="map-image" />
+
+                      <p className="brand">{brand}</p>
+
                       <p>{price}</p>
-                    </div>
-                    <div className="image-container">
-                      <p>{rating}</p>
-                    </div>
-                    <div className="image-container">
+
+                      <p className="ratings">{`⭐  ${rating}`}</p>
+
                       <p>{title}</p>
+                      <button className="btn btn-danger"> Add to Cart</button>
                     </div>
                   </div>
                 );

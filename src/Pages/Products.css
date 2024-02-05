@@ -18,3 +18,50 @@
     color: whitesmoke !important;
    margin-top: 25px;
 }
+
+
+.prods{
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  
+
+  
+}
+.product-container{
+  background-color: palegreen;
+  width: 20vw;
+  display: inline-flex;
+  padding: 45px;
+  margin: 25px;
+  border-radius: 10px;
+  align-items: center;
+
+  
+}
+
+
+.map-image{
+
+  width: 100%;
+  border-radius: 10px;
+}
+
+.map-image:hover{
+  height: 70%;
+  width: 70%;
+}
+
+.brand{
+  font-weight: bold;
+  text-align: center;
+  padding-top: 10px;
+  color: gray;
+}
+
+.ratings{
+  background-color: palevioletred;
+  padding: 10px;
+  
+
+}
