@@ -1,31 +1,33 @@
-import React, { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Navbars from "../Components/Navbars";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import "./Products.css";
 
 function Products() {
-  const [prod, setProd] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const getProduct = async () => {
     try {
+      const jwtToken = Cookies.get("jwt_token");
+
       const apiUrl = "https://apis.ccbp.in/products";
-      const jwtTokens = Cookies.get("jwt_token");
 
       const options = {
         headers: {
-          Authorization: `Bearer ${jwtTokens}`,
+          Authorization: `Bearer ${jwtToken}`,
         },
         method: "GET",
       };
 
       const response = await fetch(apiUrl, options);
-      const productData = response.json();
-      setProd(productData.prod);
-      console.log(productData);
+      const data = await response.json();
+
+      setProducts(data.products);
+
+      console.log(data);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching data:", error);
     }
   };
 
@@ -41,19 +43,29 @@ function Products() {
         <Row>
           <Col>
             <div className="p3-5 prods">
-              <h1> Products </h1>
-              <h1> Products </h1>
-              <h1> Products </h1>
-              <h1> Products </h1>
-              <h1> Products </h1>
-              <h1> Products </h1>
-              <h1> Products </h1>
-              <h1> Products </h1>
-              <h1> Products </h1>
-              <h1> Products </h1>
-              <h1> Products </h1>
-              <h1> Products </h1>
-              <h1> Products </h1>
+              {products.map((item, index) => {
+                const { brand, image_url, price, rating, title } = item;
+
+                return (
+                  <div key={index.id} className="product-container">
+                    <div className="image-container">
+                      <img src={image_url} alt="" />
+                    </div>
+                    <div className="image-container">
+                      <p>{brand}</p>
+                    </div>
+                    <div className="image-container">
+                      <p>{price}</p>
+                    </div>
+                    <div className="image-container">
+                      <p>{rating}</p>
+                    </div>
+                    <div className="image-container">
+                      <p>{title}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </Col>
         </Row>
