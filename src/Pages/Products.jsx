@@ -3,6 +3,7 @@ import Navbars from "../Components/Navbars";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import "./Products.css";
+import { ShoppingCart } from "lucide-react";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -48,17 +49,21 @@ function Products() {
 
                 return (
                   <div key={index} className="product-container">
-                    <div className="image-container">
-                      <img src={image_url} alt="" className="map-image" />
+                    <img src={image_url} alt="" className="map-image" />
+                    <div className="card-body">
+                      <h2 className="card-title text-center">
+                        {brand.substr(0, 14)}
+                      </h2>
+                      <p className="card-text text-center">{title}</p>
 
-                      <p className="brand">{brand}</p>
+                      <p className="text-center price">{`₹ ${price}`}</p>
 
-                      <p>{price}</p>
-
-                      <p className="ratings">{`⭐  ${rating}`}</p>
-
-                      <p>{title}</p>
-                      <button className="btn btn-danger"> Add to Cart</button>
+                      <p className="ratings text-center">{`⭐  ${rating}`}</p>
+                      <div className="btns text-center">
+                        <button className="btns">
+                          Add to Cart{<ShoppingCart />}{" "}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 );
