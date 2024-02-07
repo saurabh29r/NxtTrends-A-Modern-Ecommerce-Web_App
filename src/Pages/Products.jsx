@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import "./Products.css";
 import { ShoppingCart } from "lucide-react";
+import Corusels from "../Components/Corusels";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -43,6 +44,9 @@ function Products() {
       <Container fluid>
         <Row>
           <Col>
+          <div>
+            <h2 className="mains-heading"> All Products</h2>
+          </div>
             <div className="p3-5 prods">
               {products.map((item, index) => {
                 const { brand, image_url, price, rating, title } = item;
@@ -51,10 +55,10 @@ function Products() {
                   <div key={index} className="product-container">
                     <img src={image_url} alt="" className="map-image" />
                     <div className="card-body">
-                      <h2 className="card-title text-center">
-                        {brand.substr(0, 14)}
-                      </h2>
-                      <p className="card-text text-center">{title}</p>
+                      <h5 className="card-title text-center pt-2">
+                        {title.substr(0, 30)}
+                      </h5>
+                      <p className="card-text text-center">{`by ${brand}`}</p>
 
                       <p className="text-center price">{`₹ ${price}`}</p>
 

@@ -97,7 +97,7 @@ Row{
   transition: transform 0.5s;
   margin: 20px;
   background-color: palegoldenrod;
-  width: 225px;
+  width: 280px;
   height: fit-content;
   border-radius: 5px;
 
@@ -149,4 +149,10 @@ padding-left: 30px;
   .product-container:hover{
     transform: translate(-15px);
   }
+}
+
+
+.mains-heading{
+  padding-left: 20px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
