@@ -28,6 +28,7 @@ function Products() {
       setProducts(data.products);
 
       console.log(data);
+      console.log(data.id);
       // console.log(data.products[16].id);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -50,12 +51,12 @@ function Products() {
             </div>
             <div className="p3-5 prods">
               {products.map((item, index) => {
-                const { brand, image_url, price, rating, title } = item;
+                const { brand, image_url, price, rating, title, id } = item;
 
                 return (
                   <>
                     <div key={index} className="product-container">
-                      <Link to={`/products/${products[15].id}`}>
+                      <Link to={`/products/${id}`}>
                         {/* here above we can see the if I write product.id , it will give the error bu if i write product[anynumber(0-56)].id the it works if we manually entered the value in url */}
                         <img src={image_url} alt="" className="map-image" />
                         <div className="card-body">

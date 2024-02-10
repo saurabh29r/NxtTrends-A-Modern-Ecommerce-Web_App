@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 
 function ProductsDetailPage() {
   const [products, setProducts] = useState([]);
+
   const params = useParams();
   const { id } = params;
   console.log(id);
@@ -26,10 +27,12 @@ function ProductsDetailPage() {
       const response = await fetch(apiUrl, options);
       const data = await response.json();
       setProducts(data.products);
+      console.log(data.similar_products);
 
       // setProducts(data.products);
 
       console.log(data);
+      console.log(data.id);
       // console.log(data.products[16].id);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -44,6 +47,7 @@ function ProductsDetailPage() {
     <>
       this is dynamic route
       <h1> {id}</h1>
+      <div>{products}</div>
     </>
     //   <div>
     //    <Link to= "/products ${id}"> </Link>
