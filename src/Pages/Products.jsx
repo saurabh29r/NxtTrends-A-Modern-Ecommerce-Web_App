@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import "./Products.css";
 import { ShoppingCart } from "lucide-react";
-import Corusels from "../Components/Corusels";
+import { Link } from "react-router-dom";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -28,6 +28,7 @@ function Products() {
       setProducts(data.products);
 
       console.log(data);
+      // console.log(data.products[16].id);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -44,32 +45,37 @@ function Products() {
       <Container fluid>
         <Row>
           <Col>
-          <div>
-            <h2 className="mains-heading"> All Products</h2>
-          </div>
+            <div>
+              <h2 className="mains-heading"> All Products</h2>
+            </div>
             <div className="p3-5 prods">
               {products.map((item, index) => {
                 const { brand, image_url, price, rating, title } = item;
 
                 return (
-                  <div key={index} className="product-container">
-                    <img src={image_url} alt="" className="map-image" />
-                    <div className="card-body">
-                      <h5 className="card-title text-center pt-2">
-                        {title.substr(0, 30)}
-                      </h5>
-                      <p className="card-text text-center">{`by ${brand}`}</p>
+                  <>
+                    <div key={index} className="product-container">
+                      <Link to={`/products/${products[15].id}`}>
+                        {/* here above we can see the if I write product.id , it will give the error bu if i write product[anynumber(0-56)].id the it works if we manually entered the value in url */}
+                        <img src={image_url} alt="" className="map-image" />
+                        <div className="card-body">
+                          <h5 className="card-title text-center pt-2">
+                            {title.substr(0, 30)}
+                          </h5>
+                          <p className="card-text text-center">{`by ${brand}`}</p>
 
-                      <p className="text-center price">{`₹ ${price}`}</p>
+                          <p className="text-center price">{`₹ ${price}`}</p>
 
-                      <p className="ratings text-center">{`⭐  ${rating}`}</p>
-                      <div className="btns text-center">
-                        <button className="btns">
-                          Add to Cart{<ShoppingCart />}{" "}
-                        </button>
-                      </div>
+                          <p className="ratings text-center">{`⭐  ${rating}`}</p>
+                          <div className="btns text-center">
+                            <button className="btns">
+                              Add to Cart{<ShoppingCart />}{" "}
+                            </button>
+                          </div>
+                        </div>
+                      </Link>
                     </div>
-                  </div>
+                  </>
                 );
               })}
             </div>

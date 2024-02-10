@@ -7,6 +7,7 @@ import Page404 from "./Components/page404";
 import Carts from "./Pages/Carts";
 import Products from "./Pages/Products";
 import Protected from "./Components/Protected";
+import ProductsDetailPage from "./Pages/ProductsDetailPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/carts" element={<Protected Comp={Carts} />} />
           <Route path="/products" element={<Protected Comp={Products} />} />
           <Route path="/*" element={<Page404 />} />
+          <Route path="/products/:id" element={<ProductsDetailPage />} />
         </Routes>
       </BrowserRouter>
     </>
