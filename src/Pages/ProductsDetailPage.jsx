@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import Navbars from "../Components/Navbars";
 
 function ProductsDetailPage() {
-  const [products, setProducts] = useState([]);
+  const [prod, setDetailProd] = useState([]);
   const [similar_products, setSimilarProd] = useState([]);
 
   const params = useParams();
@@ -29,7 +29,7 @@ function ProductsDetailPage() {
       const response = await fetch(apiUrl, options);
       const data = await response.json();
 
-      setProducts(data.products);
+      setDetailProd(data);
       console.log(data.similar_products);
       setSimilarProd(data.similar_products);
 
@@ -38,7 +38,6 @@ function ProductsDetailPage() {
       console.log(data);
 
       // console.log(data.id);
-      // console.log(data.products[16].id);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -52,27 +51,21 @@ function ProductsDetailPage() {
     <>
       <Navbars />
       this is dynamic route
-      <h1> {id}</h1>
+      <p> why this data us not displaying</p>
       <div className="product-detailed-container">
-        {products.map((item, index) => {
-          const { image_url, brand, description, price, rating } = item;
+        <h2> {prod.title}</h2>
+        <>
+          <div key={prod.id} className="product_detailed">
+            <img src={prod.image_url} alt="product_images" />
+          </div>
+          <div className="brand-conatiner">
+            <h3> {prod.brand}</h3>
+            <p> {prod.description}</p>
+            <p>{prod.price}</p>
+            <p> {prod.rating}</p>
+          </div>
+        </>
 
-          return (
-            <>
-              <div className="product_detailed" key={index}>
-                <img src={image_url} alt="product_images" />
-              </div>
-              <div className="brand-conatiner">
-                <h3> {brand}</h3>
-                <p> {description}</p>
-                <p>{price}</p>
-                <p> {rating}</p>
-              </div>
-            </>
-          );
-        })}
-      </div>
-      <div>
         <h4> Similar Job Item</h4>
         {similar_products.map((item, index) => {
           const { image_url, price, rating, title, brand } = item;

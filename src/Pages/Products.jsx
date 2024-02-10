@@ -3,7 +3,6 @@ import Navbars from "../Components/Navbars";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import "./Products.css";
-import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function Products() {

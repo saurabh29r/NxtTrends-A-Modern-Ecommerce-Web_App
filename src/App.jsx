@@ -19,7 +19,7 @@ function App() {
           <Route path="/carts" element={<Protected Comp={Carts} />} />
           <Route path="/products" element={<Protected Comp={Products} />} />
           <Route path="/*" element={<Page404 />} />
-          <Route path="/products/:id" element={<ProductsDetailPage  />} />
+          <Route path="/products/:id" element={<ProductsDetailPage />} />
         </Routes>
       </BrowserRouter>
     </>
