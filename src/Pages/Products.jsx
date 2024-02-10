@@ -26,9 +26,9 @@ function Products() {
       const data = await response.json();
 
       setProducts(data.products);
-
       console.log(data);
-      console.log(data.id);
+
+      // console.log(data.id);
       // console.log(data.products[16].id);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -56,25 +56,23 @@ function Products() {
                 return (
                   <>
                     <div key={index} className="product-container">
-                      <Link to={`/products/${id}`}>
-                        {/* here above we can see the if I write product.id , it will give the error bu if i write product[anynumber(0-56)].id the it works if we manually entered the value in url */}
-                        <img src={image_url} alt="" className="map-image" />
-                        <div className="card-body">
-                          <h5 className="card-title text-center pt-2">
-                            {title.substr(0, 30)}
-                          </h5>
-                          <p className="card-text text-center">{`by ${brand}`}</p>
+                      {/* here above we can see the if I write product.id , it will give the error bu if i write product[anynumber(0-56)].id the it works if we manually entered the value in url */}
+                      <img src={image_url} alt="" className="map-image" />
+                      <div className="card-body">
+                        <h5 className="card-title text-center pt-2">
+                          {title.substr(0, 30)}
+                        </h5>
+                        <p className="card-text text-center">{`by ${brand}`}</p>
 
-                          <p className="text-center price">{`₹ ${price}`}</p>
+                        <p className="text-center price">{`₹ ${price}`}</p>
 
-                          <p className="ratings text-center">{`⭐  ${rating}`}</p>
-                          <div className="btns text-center">
-                            <button className="btns">
-                              Add to Cart{<ShoppingCart />}{" "}
-                            </button>
-                          </div>
+                        <p className="ratings text-center">{`⭐  ${rating}`}</p>
+                        <div className="btns text-center">
+                          <button className="btns">
+                            <Link to={`/products/${id}`}> View More </Link>
+                          </button>
                         </div>
-                      </Link>
+                      </div>
                     </div>
                   </>
                 );
