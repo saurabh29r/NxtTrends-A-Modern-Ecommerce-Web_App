@@ -58,11 +58,9 @@ function ProductsDetailPage() {
           <Col>
             <>
               <div className="mt-3">
-                <button className="btn btn-secondary">
-                  <Link to={`/products`} className="back-button">
-                    {<MoveLeft />}
-                  </Link>
-                </button>
+                <Link to={`/products`} className="back-button">
+                  <button className="btn btn-secondary">{<MoveLeft />}</button>
+                </Link>
               </div>
               <div className="product-detailed-container mt-5">
                 <div key={prod.id} className="product_detailed">

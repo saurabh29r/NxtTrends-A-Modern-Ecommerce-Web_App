@@ -5,12 +5,13 @@ import Cookies from "js-cookie";
 import "./Products.css";
 import LazyLoad from "react-lazy-load";
 import { FaSearch } from "react-icons/fa";
-
+import { CirclesWithBar } from "react-loader-spinner";
 import { Link } from "react-router-dom";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const getProduct = async () => {
     try {
@@ -30,6 +31,7 @@ function Products() {
 
       setProducts(data.products);
       console.log(data);
+      setIsLoading(false);
       // the above will show the data in console.
 
       // console.log(data.id);
@@ -66,20 +68,24 @@ function Products() {
               />
             </div>
             <div className="p3-5 prods">
-              {filteredProducts.length === 0 ? (
-                <div className="empty-search-conatiner">
-                <div className="empty-search">
-                  <img
-                    src={
-                      "https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-no-products-view.png"
-                    }
-                    alt="No results found"
-                    className="no-product-found"
-                  />
-
-                  <h3> No Products Found</h3>
-                  <p> Search something else</p>
+              {isLoading ? (
+                <div className="loader">
+                  <CirclesWithBar /> {/*loader added here  */}
                 </div>
+              ) : filteredProducts.length === 0 ? (
+                <div className="empty-search-conatiner">
+                  <div className="empty-search">
+                    <img
+                      src={
+                        "https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-no-products-view.png"
+                      }
+                      alt="No results found"
+                      className="no-product-found"
+                    />
+
+                    <h3> No Products Found</h3>
+                    <p> Search something else</p>
+                  </div>
                 </div>
               ) : (
                 filteredProducts.map((item, index) => {
