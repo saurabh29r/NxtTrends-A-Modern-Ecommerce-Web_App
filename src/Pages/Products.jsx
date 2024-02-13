@@ -3,10 +3,14 @@ import Navbars from "../Components/Navbars";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import "./Products.css";
+import LazyLoad from "react-lazy-load";
+import { FaSearch } from "react-icons/fa";
+
 import { Link } from "react-router-dom";
 
 function Products() {
   const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState("");
 
   const getProduct = async () => {
     try {
@@ -26,6 +30,7 @@ function Products() {
 
       setProducts(data.products);
       console.log(data);
+      // the above will show the data in console.
 
       // console.log(data.id);
       // console.log(data.products[16].id);
@@ -38,6 +43,10 @@ function Products() {
     getProduct();
   }, []);
 
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <>
       <Navbars />
@@ -48,34 +57,59 @@ function Products() {
             <div>
               <h2 className="mains-heading"> All Products</h2>
             </div>
+            <div className="input-wrapper">
+              <FaSearch id="search-icon" />
+              <input
+                type="search"
+                placeholder="Please Enter the keyword"
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
             <div className="p3-5 prods">
-              {products.map((item, index) => {
-                const { brand, image_url, price, rating, title, id } = item;
+              {filteredProducts.length === 0 ? (
+                <div className="empty-search-conatiner">
+                <div className="empty-search">
+                  <img
+                    src={
+                      "https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-no-products-view.png"
+                    }
+                    alt="No results found"
+                    className="no-product-found"
+                  />
 
-                return (
-                  <>
-                    <div key={index} className="product-container">
-                      {/* here above we can see the if I write product.id , it will give the error bu if i write product[anynumber(0-56)].id the it works if we manually entered the value in url */}
-                      <img src={image_url} alt="" className="map-image" />
-                      <div className="card-body">
-                        <h5 className="card-title text-center pt-2">
-                          {title.substr(0, 30)}
-                        </h5>
-                        <p className="card-text text-center">{`by ${brand}`}</p>
+                  <h3> No Products Found</h3>
+                  <p> Search something else</p>
+                </div>
+                </div>
+              ) : (
+                filteredProducts.map((item, index) => {
+                  const { brand, image_url, price, rating, title, id } = item;
 
-                        <p className="text-center price">{`₹ ${price}`}</p>
+                  return (
+                    <LazyLoad key={index}>
+                      <div className="product-container">
+                        <img src={image_url} alt="" className="map-image" />
+                        <div className="card-body">
+                          <h5 className="card-title text-center pt-2">
+                            {title.substr(0, 30)}
+                          </h5>
+                          <p className="card-text text-center">{`by ${brand}`}</p>
 
-                        <p className="ratings text-center">{`⭐  ${rating}`}</p>
-                        <div className="btns text-center">
-                          <button className="btns">
-                            <Link to={`/products/${id}`}> View More </Link>
-                          </button>
+                          <p className="text-center price">{`₹ ${price}`}</p>
+                          <div className="rating-container">
+                            <p className="ratings text-center">{`${rating} ⭐`}</p>
+                          </div>
+                          <div className="btns text-center">
+                            <button className="btns">
+                              <Link to={`/products/${id}`}> View More </Link>
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </>
-                );
-              })}
+                    </LazyLoad>
+                  );
+                })
+              )}
             </div>
           </Col>
         </Row>
