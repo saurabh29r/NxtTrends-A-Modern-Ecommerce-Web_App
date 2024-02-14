@@ -94,6 +94,23 @@
 }
 
 
-.product-container{
-  
+.line{
+    border-top: 1px solid #1a6dd8;
+    margin: 0;
+}
+
+.counter-conatiner{
+    letter-spacing: 30px;
+}
+
+.counternum{
+    display: inline;
+    font-weight: bold;
+    color: deeppink;
+    font-size: 18px;
+    
+}
+
+.min{
+    cursor: pointer;
 }

@@ -5,13 +5,14 @@ import Cookies from "js-cookie";
 import Navbars from "../Components/Navbars";
 import { Container, Row, Col } from "react-bootstrap";
 import "./ProductsDetailPage.css";
-import { MoveLeft } from "lucide-react";
+import { MoveLeft, Plus, Minus } from "lucide-react";
 import { CirclesWithBar } from "react-loader-spinner";
 
 function ProductsDetailPage() {
   const [prod, setDetailProd] = useState([]);
   const [similar_products, setSimilarProd] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [counter, SetCounter] = useState(1);
 
   const params = useParams();
   const { id } = params;
@@ -37,6 +38,7 @@ function ProductsDetailPage() {
       setDetailProd(data);
       console.log(data.similar_products);
       setSimilarProd(data.similar_products);
+      //this code is written by Saurabh Rauniyar
 
       // setProducts(data.products);
       // console.log(data);
@@ -97,6 +99,31 @@ function ProductsDetailPage() {
                       {` Available : ${prod.availability}`}
                     </p>
                     <p className="brand-section">{`Brand: ${prod.brand}`}</p>
+                    <hr className="line" />
+                    <div className="counter-conatiner d-flex">
+                      <div>
+                        <Minus
+                          className="min"
+                          onClick={() => {
+                            if (counter > 1) {
+                              SetCounter(counter - 1);
+                            }
+                          }}
+                        />
+                        <p className="counternum"> {counter}</p>
+                      </div>
+                      <Plus
+                        className="min"
+                        onClick={() => {
+                          if (counter < 9) {
+                            SetCounter(counter + 1);
+                          }
+                        }}
+                      />
+                    </div>
+                    <div className="mt-2 ml-2">
+                      <button className="btn btn-primary"> Add to cart</button>
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -117,6 +144,31 @@ function ProductsDetailPage() {
                       {` Available : ${prod.availability}`}
                     </p>
                     <p className="brand-section">{`Brand: ${prod.brand}`}</p>
+                    <hr className="line" />
+                    <div className="counter-conatiner d-flex">
+                      <div>
+                        <Minus
+                          className="min"
+                          onClick={() => {
+                            if (counter > 1) {
+                              SetCounter(counter - 1);
+                            }
+                          }}
+                        />
+                        <p className="counternum"> {counter}</p>
+                      </div>
+                      <Plus
+                        className="min"
+                        onClick={() => {
+                          if (counter < 9) {
+                            SetCounter(counter + 1);
+                          }
+                        }}
+                      />
+                    </div>
+                    <div className="mt-2 ml-2">
+                      <button className="btn btn-primary"> Add to cart</button>
+                    </div>
                   </div>
                 </div>
                 <br />
