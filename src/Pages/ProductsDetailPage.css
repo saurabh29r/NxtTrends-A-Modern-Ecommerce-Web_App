@@ -3,3 +3,84 @@
 
 }
 
+
+.detailed-view-image{
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+.brand-conatiner-1{
+    padding-left: 60px;
+}
+
+.product-name{
+    color: #3e4c59;
+    font-family: 'Roboto';
+    font-size: 40px;
+    font-weight: 500;
+    
+}
+
+.loader{
+    position: absolute;
+    top: 50%;
+     left: 50%;
+     transform: translate(-50% ,140% );
+}
+
+.rating-reviews-con{
+    display: flex;
+    align-items: center;
+    
+}
+
+.rating-conatiner{
+  background-color: #3b82f6;
+  border-radius: 6px;
+  width: 10%;
+  text-align: center;
+ 
+ 
+
+
+}
+
+.ratings{
+    color: #ffffff;
+    display: inline-block;
+    vertical-align: middle; 
+    padding-top: -2px;
+    margin-bottom: 10px;
+}
+
+.reviwes{
+    color: #12022f;
+    font-family: 'Open Sans';
+    font-size: 16px;
+    margin-left: 12px;
+    padding-top: 5px;
+}
+
+.product-description{
+    color: #616e7c;
+    font-family: 'Roboto';
+    font-size: 14px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+
+.available-product{
+    font-weight: bold;
+    color: #3e4c59;
+}
+
+.brand-section{
+    color: #3e4c59;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+

@@ -63,7 +63,7 @@ function Products() {
               <FaSearch id="search-icon" />
               <input
                 type="search"
-                placeholder="Please Enter the keyword"
+                placeholder="Please Enter the product Like:watch,toy etc"
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
