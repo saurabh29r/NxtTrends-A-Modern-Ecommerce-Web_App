@@ -65,7 +65,7 @@ function ProductsDetailPage() {
               </div>
             ) : (
               <>
-                <div className="mt-3">
+                <div className="mt-3 back-button">
                   <Link to={`/products`} className="back-button">
                     <button className="btn btn-secondary">
                       {<MoveLeft />}
@@ -100,37 +100,46 @@ function ProductsDetailPage() {
                   </div>
                 </div>
                 <div>
-                  <div className="brand-conatiner-mobile d-block d-lg-none  ">
-                    <h2> {prod.title}</h2>
+                  <div className="brand-conatiner-mob d-block d-lg-none  ">
+                    <h2 className="product-name"> {prod.title}</h2>
                     <p className="price"> {`₹ ${prod.price}`}</p>
-                    <div className="d-flex ">
-                      <p> {`${prod.rating} ⭐`}</p>
-                      <p> {`${prod.total_reviews} Reviews`} </p>
+                    <div className="rating-reviews-con">
+                      <div className="rating-conatiner">
+                        <p className="ratings"> {`${prod.rating} ⭐`}</p>
+                      </div>
+                      <p className="reviwes">
+                        {`${prod.total_reviews} Reviews`}
+                      </p>
                     </div>
 
-                    <p> {prod.description}</p>
-                    <p className="font-weight-bold">
+                    <p className="product-description"> {prod.description}</p>
+                    <p className="available-product">
                       {` Available : ${prod.availability}`}
                     </p>
-                    <p> {`Brand: ${prod.brand}`}</p>
-
-                    <p> {prod.rating}</p>
+                    <p className="brand-section">{`Brand: ${prod.brand}`}</p>
                   </div>
                 </div>
                 <br />
-                <h4 className="mt-5"> Similar Products</h4>
-                <div>
+                <h2 className="mt-5 brand-section"> Similar Products</h2>
+                <div className="prods">
                   {similar_products.map((item, index) => {
                     const { image_url, price, rating, title, brand } = item;
 
                     return (
                       <div key={index}>
-                        <div className="similar-product-container">
-                          <img src={image_url} alt="similar_products" />
-                          <p>{price}</p>
-                          <p>{rating}</p>
-                          <p> {title}</p>
-                          <p> {brand}</p>
+                        <div className="product-container pb-3">
+                          <img src={image_url} alt="" className="map-image" />
+                          <div className="card-body">
+                            <h5 className="card-title text-center pt-2">
+                              {title.substr(0, 30)}
+                            </h5>
+                            <p className="card-text text-center">{`by ${brand}`}</p>
+
+                            <p className="text-center price">{`₹ ${price}`}</p>
+                            <div className="rating-container">
+                              <p className="ratings text-center">{`${rating} ⭐`}</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     );
