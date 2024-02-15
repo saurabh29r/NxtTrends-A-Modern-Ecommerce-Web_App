@@ -67,14 +67,14 @@ function ProductsDetailPage() {
               </div>
             ) : (
               <>
-                <div className="mt-3 back-button">
+                <div className=" back-button">
                   <Link to={`/products`} className="back-button">
                     <button className="btn btn-secondary">
                       {<MoveLeft />}
                     </button>
                   </Link>
                 </div>
-                <div className="product-detailed-container mt-5 d-flex">
+                <div className="product-detailed-container d-flex">
                   <div key={prod.id} className="product_detailed ">
                     <img
                       src={prod.image_url}
@@ -121,8 +121,10 @@ function ProductsDetailPage() {
                         }}
                       />
                     </div>
-                    <div className="mt-2 ml-2">
-                      <button className="btn btn-primary"> Add to cart</button>
+                    <div>
+                      <Link to={"/carts"}>
+                        <button className="btn btn-primary">Add to cart</button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -166,13 +168,15 @@ function ProductsDetailPage() {
                         }}
                       />
                     </div>
-                    <div className="mt-2 ml-2">
-                      <button className="btn btn-primary"> Add to cart</button>
+                    <div className="mt-2 ">
+                      <Link to={"/carts"}>
+                        <button className="btn btn-primary">Add to cart</button>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <br />
-                <h2 className="mt-5 brand-section"> Similar Products</h2>
+                <h2 className=" brand-section"> Similar Products</h2>
                 <div className="prods">
                   {similar_products.map((item, index) => {
                     const { image_url, price, rating, title, brand } = item;

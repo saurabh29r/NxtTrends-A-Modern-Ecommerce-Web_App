@@ -255,3 +255,7 @@ input:focus{
    transform: translate(-50% ,140% );
 
 }
+
+.card-title{
+  color:   #3e4c59;
+}
