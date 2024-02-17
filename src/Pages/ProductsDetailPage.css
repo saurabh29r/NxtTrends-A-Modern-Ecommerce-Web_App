@@ -114,3 +114,27 @@
 .min{
     cursor: pointer;
 }
+
+/* @media screen and (max-width:991px){
+
+    .rating-conatiner{
+        background-color: #3b82f6;
+        border-radius: 6px;
+        width: 20%;
+        text-align: center;
+       
+       
+      
+      
+      }
+      
+      .ratings{
+          color: #ffffff;
+          display: inline-block;
+          vertical-align: middle; 
+          padding-top: -2px;
+          margin-bottom: 10px;
+      } */
+
+
+

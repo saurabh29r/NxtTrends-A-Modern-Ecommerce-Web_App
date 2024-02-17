@@ -90,7 +90,7 @@ function ProductsDetailPage() {
                         <p className="ratings"> {`${prod.rating} ⭐`}</p>
                       </div>
                       <p className="reviwes">
-                        {`${prod.total_reviews} Reviews`}{" "}
+                        {`${prod.total_reviews} Reviews`}
                       </p>
                     </div>
 
