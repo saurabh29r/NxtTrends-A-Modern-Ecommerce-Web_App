@@ -12,6 +12,7 @@ function Carts() {
           <Col>
             <div>
               <p> This is Cart page </p>
+              <p> here you will get all the saved items</p>
             </div>
           </Col>
         </Row>
