@@ -95,7 +95,7 @@ Row{
 .product-container{
   box-shadow:  0px 2px 5px black;
   transition: transform 0.5s;
-  margin: 20px;
+   margin: 20px;
   background-color: palegoldenrod;
   width: 280px;
   height: fit-content;
@@ -146,7 +146,7 @@ padding-left: 30px;
     transition: transform 0.5s;
     margin: 20px;
     background-color: palegoldenrod;
-    width: 375px;
+    width: 90%;
     height: fit-content;
     border-radius: 5px;
     
