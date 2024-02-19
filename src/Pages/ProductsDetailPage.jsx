@@ -1,29 +1,40 @@
-import Products from "./Products";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Cookies from "js-cookie";
-import Navbars from "../Components/Navbars";
 import { Container, Row, Col } from "react-bootstrap";
-import "./ProductsDetailPage.css";
 import { MoveLeft, Plus, Minus } from "lucide-react";
 import { CirclesWithBar } from "react-loader-spinner";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Cookies from "js-cookie";
+import Navbars from "../Components/Navbars";
+import "./ProductsDetailPage.css";
 
 function ProductsDetailPage() {
-  const [prod, setDetailProd] = useState([]);
-  const [similar_products, setSimilarProd] = useState([]);
+  const [prod, setDetailProd] = useState({});
+  const [similarProducts, setSimilarProd] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [counter, SetCounter] = useState(1);
-  const [carts, setCarts] = useState([]);
+  const [counter, setCounter] = useState(1);
 
   const params = useParams();
   const { id } = params;
-  // console.log(id);
-  // console.log(params);
+
+  const addToCart = () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const itemInCartIndex = cart.findIndex((item) => item.prod.id === prod.id);
+
+    if (itemInCartIndex !== -1) {
+      cart[itemInCartIndex].quantity += counter;
+    } else {
+      cart.push({ prod, quantity: counter });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    toast.success("Item added to cart");
+  };
 
   const getProductDetails = async () => {
     try {
       const jwtToken = Cookies.get("jwt_token");
-
       const apiUrl = "https://apis.ccbp.in/products/" + `${id}`;
 
       const options = {
@@ -37,16 +48,8 @@ function ProductsDetailPage() {
       const data = await response.json();
 
       setDetailProd(data);
-      console.log(data.similar_products);
       setSimilarProd(data.similar_products);
-      //this code is written by Saurabh Rauniyar
-
-      // setProducts(data.products);
-      // console.log(data);
-      console.log(data);
       setIsLoading(false);
-
-      // console.log(data.id);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -68,7 +71,7 @@ function ProductsDetailPage() {
               </div>
             ) : (
               <>
-                <div className=" back-button">
+                <div className="back-button">
                   <Link to={`/products`} className="back-button">
                     <button className="btn btn-secondary">
                       {<MoveLeft />}
@@ -76,14 +79,14 @@ function ProductsDetailPage() {
                   </Link>
                 </div>
                 <div className="product-detailed-container d-flex">
-                  <div key={prod.id} className="product_detailed ">
+                  <div key={prod.id} className="product_detailed">
                     <img
                       src={prod.image_url}
                       alt="product_images"
                       className="detailed-view-image"
                     />
                   </div>
-                  <div className="brand-conatiner-1 d-none d-lg-block  ">
+                  <div className="brand-conatiner-1 d-none d-lg-block">
                     <h2 className="product-name"> {prod.title}</h2>
                     <p className="price"> {`₹ ${prod.price}`}</p>
                     <div className="rating-reviews-con">
@@ -94,7 +97,6 @@ function ProductsDetailPage() {
                         {`${prod.total_reviews} Reviews`}
                       </p>
                     </div>
-
                     <p className="product-description"> {prod.description}</p>
                     <p className="available-product">
                       {` Available : ${prod.availability}`}
@@ -107,7 +109,7 @@ function ProductsDetailPage() {
                           className="min"
                           onClick={() => {
                             if (counter > 1) {
-                              SetCounter(counter - 1);
+                              setCounter(counter - 1);
                             }
                           }}
                         />
@@ -118,21 +120,27 @@ function ProductsDetailPage() {
                           className="min"
                           onClick={() => {
                             if (counter < 9) {
-                              SetCounter(counter + 1);
+                              setCounter(counter + 1);
                             }
                           }}
                         />
                       </li>
                     </div>
                     <div>
-                      {/* <Link to={"/carts"}> */}
-                      <button className="btn btn-primary">Add to cart</button>
-                      {/* </Link> */}
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => {
+                          addToCart();
+                        }}
+                      >
+                        Add to cart
+                        <ToastContainer />
+                      </button>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <div className="brand-conatiner-mob d-block d-lg-none  ">
+                  <div className="brand-conatiner-mob d-block d-lg-none">
                     <h2 className="product-name"> {prod.title}</h2>
                     <p className="price"> {`₹ ${prod.price}`}</p>
                     <div className="rating-reviews-con">
@@ -143,7 +151,6 @@ function ProductsDetailPage() {
                         {`${prod.total_reviews} Reviews`}
                       </p>
                     </div>
-
                     <p className="product-description"> {prod.description}</p>
                     <p className="available-product">
                       {` Available : ${prod.availability}`}
@@ -156,7 +163,7 @@ function ProductsDetailPage() {
                           className="min"
                           onClick={() => {
                             if (counter > 1) {
-                              SetCounter(counter - 1);
+                              setCounter(counter - 1);
                             }
                           }}
                         />
@@ -167,23 +174,29 @@ function ProductsDetailPage() {
                           className="min"
                           onClick={() => {
                             if (counter < 9) {
-                              SetCounter(counter + 1);
+                              setCounter(counter + 1);
                             }
                           }}
                         />
                       </li>
                     </div>
-                    <div className="mt-2 ">
-                      {/* <Link to={"/carts"}> */}
-                      <button className="btn btn-primary">Add to cart</button>
-                      {/* </Link> */}
+                    <div className="mt-2">
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => {
+                          addToCart();
+                        }}
+                      >
+                        Add to cart
+                        <ToastContainer />
+                      </button>
                     </div>
                   </div>
                 </div>
                 <br />
-                <h2 className=" brand-section"> Similar Products</h2>
+                <h2 className="brand-section"> Similar Products</h2>
                 <div className="prods">
-                  {similar_products.map((item, index) => {
+                  {similarProducts.map((item, index) => {
                     const { image_url, price, rating, title, brand } = item;
 
                     return (
@@ -195,7 +208,6 @@ function ProductsDetailPage() {
                               {title.substr(0, 30)}
                             </h5>
                             <p className="card-text text-center">{`by ${brand}`}</p>
-
                             <p className="text-center price">{`₹ ${price}`}</p>
                             <div className="rating-container">
                               <p className="ratings text-center">{`${rating} ⭐`}</p>

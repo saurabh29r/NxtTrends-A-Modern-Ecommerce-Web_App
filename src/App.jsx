@@ -3,10 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Components/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
-import Carts from "./Pages/Carts";
 import Products from "./Pages/Products";
 import Protected from "./Components/Protected";
 import ProductsDetailPage from "./Pages/ProductsDetailPage";
+import Carts from "./Pages/Cart/Carts";
 
 function App() {
   return (
