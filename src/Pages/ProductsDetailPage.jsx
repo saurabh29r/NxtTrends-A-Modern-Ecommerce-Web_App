@@ -13,6 +13,7 @@ function ProductsDetailPage() {
   const [similar_products, setSimilarProd] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [counter, SetCounter] = useState(1);
+  const [carts, setCarts] = useState([]);
 
   const params = useParams();
   const { id } = params;
@@ -100,8 +101,8 @@ function ProductsDetailPage() {
                     </p>
                     <p className="brand-section">{`Brand: ${prod.brand}`}</p>
                     <hr className="line" />
-                    <div className="counter-conatiner d-flex">
-                      <div>
+                    <div className="counter-conatiner d-flex mb-2">
+                      <li>
                         <Minus
                           className="min"
                           onClick={() => {
@@ -111,20 +112,22 @@ function ProductsDetailPage() {
                           }}
                         />
                         <p className="counternum"> {counter}</p>
-                      </div>
-                      <Plus
-                        className="min"
-                        onClick={() => {
-                          if (counter < 9) {
-                            SetCounter(counter + 1);
-                          }
-                        }}
-                      />
+                      </li>
+                      <li>
+                        <Plus
+                          className="min"
+                          onClick={() => {
+                            if (counter < 9) {
+                              SetCounter(counter + 1);
+                            }
+                          }}
+                        />
+                      </li>
                     </div>
                     <div>
-                      <Link to={"/carts"}>
-                        <button className="btn btn-primary">Add to cart</button>
-                      </Link>
+                      {/* <Link to={"/carts"}> */}
+                      <button className="btn btn-primary">Add to cart</button>
+                      {/* </Link> */}
                     </div>
                   </div>
                 </div>
@@ -147,8 +150,8 @@ function ProductsDetailPage() {
                     </p>
                     <p className="brand-section">{`Brand: ${prod.brand}`}</p>
                     <hr className="line" />
-                    <div className="counter-conatiner d-flex">
-                      <div>
+                    <div className="counter-conatiner d-flex mb-2">
+                      <li>
                         <Minus
                           className="min"
                           onClick={() => {
@@ -158,20 +161,22 @@ function ProductsDetailPage() {
                           }}
                         />
                         <p className="counternum"> {counter}</p>
-                      </div>
-                      <Plus
-                        className="min"
-                        onClick={() => {
-                          if (counter < 9) {
-                            SetCounter(counter + 1);
-                          }
-                        }}
-                      />
+                      </li>
+                      <li>
+                        <Plus
+                          className="min"
+                          onClick={() => {
+                            if (counter < 9) {
+                              SetCounter(counter + 1);
+                            }
+                          }}
+                        />
+                      </li>
                     </div>
                     <div className="mt-2 ">
-                      <Link to={"/carts"}>
-                        <button className="btn btn-primary">Add to cart</button>
-                      </Link>
+                      {/* <Link to={"/carts"}> */}
+                      <button className="btn btn-primary">Add to cart</button>
+                      {/* </Link> */}
                     </div>
                   </div>
                 </div>
