@@ -18,9 +18,12 @@
     flex-direction: column;
     align-items: center;
     align-self: center;
+  
   }
   
   .cart-empty-img {
     width: 180px;
     height: 190px;
+    margin-top: 45px;
+  
   }

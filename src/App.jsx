@@ -7,11 +7,13 @@ import Products from "./Pages/Products";
 import Protected from "./Components/Protected";
 import ProductsDetailPage from "./Pages/ProductsDetailPage";
 import Carts from "./Pages/Cart/Carts";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <ToastContainer />
         <Routes>
           <Route path="/" element={<Protected Comp={Home} />} />
           <Route path="/login" element={<Login />} />

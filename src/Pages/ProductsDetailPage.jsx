@@ -134,7 +134,7 @@ function ProductsDetailPage() {
                         }}
                       >
                         Add to cart
-                        <ToastContainer />
+                       
                       </button>
                     </div>
                   </div>
@@ -188,7 +188,7 @@ function ProductsDetailPage() {
                         }}
                       >
                         Add to cart
-                        <ToastContainer />
+                      
                       </button>
                     </div>
                   </div>
