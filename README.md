@@ -85,6 +85,22 @@ Start the server
 
 ## Screenshots
 
+#Login_Page_View
+
 ![App Screenshot]![login](https://github.com/saurabh29r/NxtTrends-A-Morden-Ecommerce-Web_App/assets/48233777/4c28c221-b7da-420f-9685-309d3d396a1d)
 
+#Home_Page_view
+
+![homepage](https://github.com/saurabh29r/NxtTrends-A-Morden-Ecommerce-Web_App/assets/48233777/8bae3925-1b92-40d9-980c-b197834ab2e9)
+
+#Product_page_view
+
+![Prouctspage](https://github.com/saurabh29r/NxtTrends-A-Morden-Ecommerce-Web_App/assets/48233777/c31609cf-4c82-42cb-bb31-756c450acedc)
+
+#product_detailed_view
+![Product_details_page](https://github.com/saurabh29r/NxtTrends-A-Morden-Ecommerce-Web_App/assets/48233777/b1a414c0-dbf8-4d11-bcc2-d67399bd62b6)
+
+#Add_to_cart_page_view
+
+![addtocartpage](https://github.com/saurabh29r/NxtTrends-A-Morden-Ecommerce-Web_App/assets/48233777/a9517fe1-0bdc-479a-bc6a-ebaa4add88a4)
 
