@@ -1,0 +1,89 @@
+
+
+.cart_product_item_container{
+    background-color: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px  lightblue;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 25px;
+    width: 80%;
+}
+
+.carts-image{
+    height: 180px;
+    width: 180px;
+    border-radius: 10px;
+}
+
+.image-divs{
+    
+    float: left;
+}
+
+
+.cart-para-container{
+    width: 60%;
+    float: right;
+    padding-left: 10px;
+   
+}
+
+.image-and-price-conatiner{
+    display: flex;
+}
+
+
+
+/* .price-container{
+    width: 50%;
+    float: left;
+}
+
+.qunatity-container{
+    width: 50%;
+    float: right;
+} */
+
+@media screen and (max-width:991px){
+    .carts-image{
+        height: 80px;
+        width: 80px;
+        border-radius: 10px;
+    }
+
+
+   
+}
+
+.subtotal-checkout-conatainer{
+    float: right;
+    margin-right: 20%;
+}
+
+
+.cart-paras{
+   
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.cart-para{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: lightslategrey;
+
+}
+
+.carts-prices{
+    font-size: 20px;
+    font-weight: bold;
+   color: deeppink;
+}
+
+
+
+.subs-totals{
+    font-weight: bold;
+    font-size: 22px;
+}

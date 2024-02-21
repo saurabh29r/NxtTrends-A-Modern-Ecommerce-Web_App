@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import EmptyCartView from "./EmptyCartView";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Navbars from "../../Components/Navbars";
+import "./Carts.css";
+import EmptyCartView from "./EmptyCartView";
 
 function Carts() {
   const [cartData, setCartData] = useState([]);
@@ -27,7 +28,34 @@ function Carts() {
     const updatedCart = [...cartData];
     updatedCart.splice(index, 1);
     setCartData(updatedCart);
+    updateSubtotal(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const incrementQuantity = (index) => {
+    const updatedCart = [...cartData];
+    updatedCart[index].quantity += 1;
+    setCartData(updatedCart);
+    updateSubtotal(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const decrementQuantity = (index) => {
+    const updatedCart = [...cartData];
+    if (updatedCart[index].quantity > 1) {
+      updatedCart[index].quantity -= 1;
+      setCartData(updatedCart);
+      updateSubtotal(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
+  };
+
+  const updateSubtotal = (cart) => {
+    let tempsubTotal = 0;
+    cart.forEach((item) => {
+      tempsubTotal += item.prod.price * item.quantity;
+    });
+    setSubtotal(tempsubTotal);
   };
 
   return (
@@ -40,27 +68,63 @@ function Carts() {
               <div className="mt-3">
                 <h2>Your Cart</h2>
                 {cartData.map((cartItem, index) => (
-                  <div key={index}>
-                    <div className="product_detailed ">
-                      <img
-                        src={cartItem.prod.image_url}
-                        alt="cart_item"
-                        className="detailed-view-image"
-                      />
+                  <div key={index} className="cart_product_item_container">
+                    <div className="image-and-price-conatiner">
+                      <div className="image-divs">
+                        <img
+                          src={cartItem.prod.image_url}
+                          alt="cart_item"
+                          className="carts-image"
+                        />
+                      </div>
+                      <div className="cart-para-container">
+                        <p className="cart-para">{cartItem.prod.title}</p>
+
+                        <p className="cart-paras">{`By:${cartItem.prod.brand}`}</p>
+                      </div>
                     </div>
-                    <p>{cartItem.prod.title}</p>
-                    <p>Price: ₹ {cartItem.prod.price}</p>
-                    <p>Quantity: {cartItem.quantity}</p>
-                    <Button
-                      variant="danger"
-                      onClick={() => removeFromCart(index)}
-                    >
-                      Remove
-                    </Button>
+                    <div className="cart-price-qunty">
+                      <div className="price-container">
+                        <p className="carts-prices">
+                          {" "}
+                          {`₹${cartItem.prod.price * cartItem.quantity}`}
+                        </p>
+                      </div>
+                      <div className="qunatity-container">
+                        <p>
+                          <Button
+                            variant="outline-danger"
+                            size="sm"
+                            onClick={() => decrementQuantity(index)}
+                          >
+                            -
+                          </Button>
+                          {cartItem.quantity}
+                          <Button
+                            variant="outline-primary"
+                            size="sm"
+                            onClick={() => incrementQuantity(index)}
+                          >
+                            +
+                          </Button>
+                        </p>
+                        <Button
+                          className="mb-3"
+                          variant="info"
+                          onClick={() => removeFromCart(index)}
+                        >
+                          Remove
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                 ))}
-                <p>Subtotal: ₹ {subTotal}</p>
-                {/* Add Checkout Button Here */}
+                <div className="subtotal-checkout-conatainer">
+                  <p className="subs-totals">Subtotal: ₹ {subTotal}</p>
+                  <div className="checkout-btn">
+                    <button className="btn btn-success mb-3"> Checkout </button>
+                  </div>
+                </div>
               </div>
             ) : (
               <EmptyCartView />

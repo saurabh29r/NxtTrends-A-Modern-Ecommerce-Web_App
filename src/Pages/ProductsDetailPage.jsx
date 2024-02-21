@@ -106,13 +106,13 @@ function ProductsDetailPage() {
                     <div className="counter-conatiner d-flex mb-2">
                       <li>
                         <Minus
-                          className="min"
                           onClick={() => {
                             if (counter > 1) {
                               setCounter(counter - 1);
                             }
                           }}
                         />
+
                         <p className="counternum"> {counter}</p>
                       </li>
                       <li>
@@ -134,7 +134,6 @@ function ProductsDetailPage() {
                         }}
                       >
                         Add to cart
-                       
                       </button>
                     </div>
                   </div>
@@ -188,7 +187,6 @@ function ProductsDetailPage() {
                         }}
                       >
                         Add to cart
-                      
                       </button>
                     </div>
                   </div>
