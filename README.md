@@ -85,5 +85,6 @@ Start the server
 
 ## Screenshots
 
-![App Screenshot]
+![App Screenshot]![login](https://github.com/saurabh29r/NxtTrends-A-Morden-Ecommerce-Web_App/assets/48233777/4c28c221-b7da-420f-9685-309d3d396a1d)
+
 
