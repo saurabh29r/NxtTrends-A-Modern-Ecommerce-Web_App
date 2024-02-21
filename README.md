@@ -3,6 +3,9 @@
 
 In This Project I have builed an ecommerce web_app.
 
+## Video Explaination 
+https://www.loom.com/share/de43e58f981644679bcb123e9e1d4748?sid=f74ea3fa-3daf-4f32-b9e5-10e5ba284652
+
 
 
 ## Tech Stack
