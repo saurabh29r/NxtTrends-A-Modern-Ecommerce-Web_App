@@ -1,5 +1,5 @@
 
-# NxtTrends A Morden Ecommerce Web_App
+# NxtTrends A Modern Ecommerce Web_App
 
 In This Project I have builed an ecommerce web_app.
 
